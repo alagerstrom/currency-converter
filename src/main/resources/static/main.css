@@ -1,0 +1,37 @@
+html{
+    height: 100%;
+}
+body {
+    height: 100%;
+    --first:#A8B2B5;
+    --dark:#343330;
+    --fourth:#A8B2B5;
+    background: var(--first);
+}
+.container{
+    margin-top: 0px;
+    /*background: var(--fourth);*/
+    min-height: 100%;
+}
+.jumbotron{
+    background-color: var(--fourth);
+    /*background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/HPOKFbR/hundred-dollar-bills-as-background-money-pile-financial-theme-1920x1080-1080p-hd-format_qkfzheo8__F0000.png);*/
+    color: black;
+}
+.navbar{
+    border-color: var(--dark);
+    background: var(--dark);
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: white;
+}
+
+.navbar-header > .navbar-brand{
+    background: var(--dark);
+    color: white;
+}
+
+.navbar-header > .navbar-brand:hover{
+    background: var(--dark);
+    color: white;
+}

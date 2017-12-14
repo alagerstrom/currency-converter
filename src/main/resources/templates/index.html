@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="/reset.css"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/main.css"/>
+    <title>Currency Converter</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand">Currency Converter</div>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a th:href="@{/}">Convert</a></li>
+            <li><a th:href="@{/edit}">Edit</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+
+    <div class="jumbotron text-center">
+        <h1>Currency Converter</h1>
+        <p>Convert currencies</p>
+    </div>
+    <div class="alert alert-success" th:if="${convertResult}" th:text="${convertResult}"></div>
+
+
+    <form method="post" th:object="${convertRequest}" th:if="${convertRequest}">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="from">From:</label>
+                    <select class="form-control input-lg" id="from" th:field="*{from}">
+                        <th:block th:each="currency : ${currencyList}">
+                            <option
+                                    th:value="${currency.getId()}"
+                                    th:text="${currency.getName()}">
+                            </option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="to">To:</label>
+                    <select class="form-control input-lg" id="to" th:field="*{to}">
+                        <th:block th:each="currency : ${currencyList}">
+                            <option
+                                    th:value="${currency.getId()}"
+                                    th:text="${currency.getName()}">
+                            </option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <input type="text" placeholder="Amount" class="form-control input-lg" th:field="*{amount}"/>
+                    <span class="input-group-btn">
+                <button class="btn-lg btn-primary" type="submit">Convert</button>
+            </span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
